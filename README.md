@@ -1,8 +1,14 @@
-# concurrency
+# Go Concurrency
 Just me working through the following talks/presentations about Go concurrency patterns:
 * [Go Concurrency Patterns](https://www.youtube.com/watch?v=f6kdp27TYZs)
 * [Advanced Go Concurrency Patterns](https://www.youtube.com/watch?v=QDDwwePbDtw)
 * [Share Memory by Communicating](https://golang.org/doc/codewalk/sharemem/)
+
+## Dependencies
+
+```bash
+go get github.com/mmcdole/gofeed
+```
 
 ## Dev Workflow
 
@@ -10,7 +16,7 @@ Just me working through the following talks/presentations about Go concurrency p
 # Run the tests
 go test -v ./...
 
-# Run the main program - just a sandbox really
+# Run the rss example
 go run main.go
 ```
 
@@ -30,8 +36,11 @@ search.* // progressively more complex examples of "real-life" concurrency
 
 **Advanced Go Concurrency Patterns**
 ```go
-// TODO
+pingpong.PlayGame() // represents a ping-pong game
+rss.Fetcher // fetches items from an RSS feed
+rss.Subscription // an RSS API that turns the feed into a channel of updates
 ```
+
 **Share Memory by Communicating**
 ```go
 // TODO

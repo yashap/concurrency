@@ -1,16 +1,16 @@
 package multiplex
 
-// FanInNaive receives from 2 channels, writes to an output channel
+// FanInNaive receives from 2 channels, sends to an output channel
 // This is a naive implementation, using 2 goroutines, instead of select
 func FanInNaive(input1, input2 <-chan string) <-chan string {
 	out := make(chan string)
-	// Receive infinitely from input1, write out
+	// Receive infinitely from input1, send out
 	go func() {
 		for {
 			out <- <-input1
 		}
 	}()
-	// Receive infinitely from input2, write out
+	// Receive infinitely from input2, send out
 	go func() {
 		for {
 			out <- <-input2
@@ -19,7 +19,7 @@ func FanInNaive(input1, input2 <-chan string) <-chan string {
 	return out
 }
 
-// FanIn receives from 2 channels, writes to an output channel
+// FanIn receives from 2 channels, send to an output channel
 // This implementation uses select
 //
 // The select statement provides another way to handle multiple channels.

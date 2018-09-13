@@ -18,7 +18,7 @@ func ReceiveWithTimeout(c <-chan string, timeout time.Duration) (string, error) 
 	}
 }
 
-// ReceiveMultiWithTimeout receives 0-to-many values from a channel, and writes them
+// ReceiveMultiWithTimeout receives 0-to-many values from a channel, and sends them
 // to an output channel. Once a timeout is reached, it closes the output channel
 func ReceiveMultiWithTimeout(c <-chan string, timeout time.Duration) <-chan string {
 	out := make(chan string)

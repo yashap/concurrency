@@ -4,9 +4,9 @@ import (
 	"time"
 )
 
-// Every generates a message every d duration, and writes it to a channel. Follows
+// Every generates a message every d duration, and sends it to a channel. Follows
 // the "generator pattern", where a function creates and returns a channel, and
-// writes values to it
+// sends values to it
 func Every(d time.Duration, msg string) <-chan string {
 	c := make(chan string)
 	go func() { // Launch an infinite loop producer
@@ -18,9 +18,9 @@ func Every(d time.Duration, msg string) <-chan string {
 	return c // Return channel to caller
 }
 
-// EveryStoppable generates a message every d duration, and writes it to a
+// EveryStoppable generates a message every d duration, and sends it to a
 // channel. It returns a struct containing the main read-only output channel,
-// as well as a write-only channel that consumers can write to, telling every
+// as well as a send-only channel that consumers can send to, telling every
 // to stop writing
 func EveryStoppable(d time.Duration, msg string) Channels {
 	output := make(chan string)
